@@ -1,0 +1,33 @@
+<table class="table">
+    <thead>
+        <tr>
+            @foreach (var item in Columns)
+            {
+                <th>@item</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        <CascadingValue Value="@this">
+            <RowCollection Data="@Data"
+                           Columns="@Columns"
+                           OnClick="@RefreshComponent"></RowCollection>
+        </CascadingValue>
+    </tbody>
+</table>
+
+
+@code {
+    [Parameter]
+    public WeatherForecast[] Data { get; set; }
+
+    [Parameter]
+    public List<string> Columns { get; set; }
+
+    Task RefreshComponent(int index)
+    {
+        // Ignored for this sample scenario. However, passing the delegate into <RowCollection>
+        // has a perf implication of its own, so keep doing that.
+        return Task.CompletedTask;
+    }
+}

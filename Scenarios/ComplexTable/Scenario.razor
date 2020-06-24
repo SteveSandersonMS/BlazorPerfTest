@@ -1,0 +1,17 @@
+﻿@implements IGridScenario
+<h3>ComplexTable 20x200</h3>
+
+<TableComponent Data="@Forecasts" Columns="@Columns"></TableComponent>
+
+@code {
+    [Parameter] public WeatherForecast[] Forecasts { get; set; }
+
+    private List<string> Columns { get; set; } = new List<string>
+{
+        "Date", "TemperatureC", "TemperatureF", "Summary",
+        "Date", "TemperatureC", "TemperatureF", "Summary",
+        "Date", "TemperatureC", "TemperatureF", "Summary",
+        "Date", "TemperatureC", "TemperatureF", "Summary",
+        "Date", "TemperatureC", "TemperatureF", "Summary",
+    };
+}

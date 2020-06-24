@@ -1,0 +1,21 @@
+﻿@page "/fastgrid"
+@inject IJSRuntime JS
+
+<button @onclick="@TogglePage">Toggle page</button>
+
+<Scenarios.FastGrid.Scenario Forecasts="@forecasts" />
+
+@code {
+    WeatherForecast[] forecasts = WeatherForecast.staticSampleDataPage1;
+
+    protected override void OnInitialized()
+    {
+        ((WebAssemblyJSRuntime)JS).InvokeUnmarshalled<object>("beginTiming");
+    }
+
+    void TogglePage()
+    {
+        ((WebAssemblyJSRuntime)JS).InvokeUnmarshalled<object>("beginTiming");
+        forecasts = (forecasts == WeatherForecast.staticSampleDataPage1) ? WeatherForecast.staticSampleDataPage2 : WeatherForecast.staticSampleDataPage1;
+    }
+}

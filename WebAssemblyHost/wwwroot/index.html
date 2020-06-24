@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>WebAssemblyHost</title>
+    <base href="/" />
+    <style>
+        #blazor-error-ui {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="timing-result"></p>
+    <app>Loading...</app>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        let startTime;
+        function beginTiming() {
+            startTime = new Date();
+        }
+
+        // Intercept Blazor's rendering logic so we can measure just the time spent in .NET code
+        const originalRenderBatchFunction = Blazor._internal.renderBatch;
+        Blazor._internal.renderBatch = function () {
+            if (startTime) {
+                const endTime = new Date();
+                const duration = endTime.valueOf() - startTime.valueOf();
+                const elem = document.getElementById('timing-result');
+                if (elem) {
+                    elem.textContent = `Latest rendering took ${duration}ms in .NET (does not include time updating the DOM in JS)`;
+                    console.log(elem.textContent);
+                }
+            }
+
+            // Now run the JS code that updates the DOM
+            return originalRenderBatchFunction.apply(this, arguments);
+        }
+    </script>
+</body>
+
+</html>

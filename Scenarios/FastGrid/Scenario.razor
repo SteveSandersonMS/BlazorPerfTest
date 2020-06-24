@@ -1,0 +1,29 @@
+﻿@implements IGridScenario
+<h3>FastGrid 20x200</h3>
+
+<Grid Data="@Forecasts">
+    <GridColumn TRowData="WeatherForecast" Title="Date">@context.Date.Day</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="TemperatureC">@context.TemperatureC</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="TemperatureF">@context.TemperatureF</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="Summary">@context.Summary</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="Date">@context.Date.Day</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="TemperatureC">@context.TemperatureC</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="TemperatureF">@context.TemperatureF</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="Summary">@context.Summary</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="Date">@context.Date.Day</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="TemperatureC">@context.TemperatureC</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="TemperatureF">@context.TemperatureF</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="Summary">@context.Summary</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="Date">@context.Date.Day</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="TemperatureC">@context.TemperatureC</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="TemperatureF">@context.TemperatureF</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="Summary">@context.Summary</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="Date">@context.Date.Day</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="TemperatureC">@context.TemperatureC</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="TemperatureF">@context.TemperatureF</GridColumn>
+    <GridColumn TRowData="WeatherForecast" Title="Summary">@context.Summary</GridColumn>
+</Grid>
+
+@code {
+    [Parameter] public WeatherForecast[] Forecasts { get; set; }
+}
